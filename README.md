@@ -127,4 +127,41 @@ Navigate using the top navbar.
 
 Use the services page to select and book sneaker wash or custom designs.
 
-Use the enquiry page to send messages or contact via WhatsApp.# WED_POE_PART3
+Use the enquiry page to send messages or contact via WhatsApp.
+
+
+
+References
+
+HTML5 Documentation
+
+W3C. (n.d.). HTML5 Specification. https://www.w3.org/TR/html5/
+
+CSS3 Documentation
+
+W3C. (n.d.). CSS3 Specification. https://www.w3.org/Style/CSS/
+
+JavaScript Basics
+
+Mozilla Developer Network (MDN). JavaScript Guide. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+
+Google Maps Embed
+
+Google Developers. Maps Embed API. https://developers.google.com/maps/documentation/embed/overview
+
+Form Validation in JavaScript
+
+W3Schools. JavaScript Form Validation. https://www.w3schools.com/js/js_validation.asp
+
+Responsive Web Design
+
+Mozilla Developer Network. Responsive Design. https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design
+
+WhatsApp Chat Integration
+
+WhatsApp Business API. Click to Chat. https://faq.whatsapp.com/general/chats/how-to-use-click-to-chat
+
+Web Development Best Practices
+
+MDN Web Docs. Web development concepts. https://developer.mozilla.org/en-US/docs/Learn
+# WED_POE_PART3
