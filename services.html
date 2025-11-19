@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FreshKickers — Services</title>
+
+    <!-- LINK CSS -->
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="topbar">
+        <div class="logo"><span></span>FreshKickers</div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+         <a href=" news.html"> News</a>
+        <a href="location.html">Location</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="enquiry.html">Enquiry</a>
+        
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- SERVICES SECTION -->
+        <section id="services">
+            <h2>Our Services</h2>
+
+            <div class="services-content">
+
+                <p>You will never go wrong with FreshKickers</p>
+                <p>
+                    WHEN YOU WEAR THIS GARMENT YOU CARRY  
+                    THE STATUS OF A BIG BOSS  
+                    LIVE LIKE IT.
+                </p>
+
+                <img src="IMAGES/customizing.avif" alt="FreshKickers" width="500" height="300" />
+
+                <!-- Select Service -->
+                <label>Select Service:</label>
+                <select id="serviceType" onchange="showServiceDetails()">
+                    <option value="">-- Select --</option>
+                    <option value="wash">Sneaker Wash</option>
+                    <option value="custom">Custom Design</option>
+                </select>
+
+                <!-- WASH DETAILS -->
+                <div id="washDetails" style="display:none;">
+                    <label>Choose Wash Type:</label>
+                    <select id="washType" onchange="updatePrice()">
+                        <option value="basic">Basic Wash — R80</option>
+                        <option value="deep">Deep Clean — R150</option>
+                        <option value="premium">Premium Wash (Special: R200 instead of R250)</option>
+                    </select>
+
+                    <label>Pickup or Drop-off:</label>
+                    <select id="deliveryOption" onchange="updatePrice()">
+                        <option value="dropoff">I'll Bring My Sneakers</option>
+                        <option value="pickup">Pickup & Delivery (+R50)</option>
+                    </select>
+
+                    <label>Address (if pickup):</label>
+                    <input type="text" id="washAddress" placeholder="Enter your pickup address" />
+
+                    <div class="price-box" id="washPriceBox">Estimated Price: R0</div>
+                    <button class="btn" onclick="submitWash()">Book Wash</button>
+                </div>
+
+                <!-- CUSTOM DETAILS -->
+                <div id="customDetails" style="display:none;">
+                    <label>Design Type:</label>
+                    <select id="designType" onchange="showOtherOption()">
+                        <option value="animation">Animation</option>
+                        <option value="writing">Writing/Quotes</option>
+                        <option value="graffiti">Graffiti</option>
+                        <option value="other">Other (describe below)</option>
+                    </select>
+
+                    <div id="otherDesign" style="display:none;">
+                        <label>Describe your design:</label>
+                        <textarea id="customDescription" placeholder="Describe your design idea"></textarea>
+
+                        <label>Upload reference image:</label>
+                        <input type="file" id="customImage" accept="image/*" />
+                    </div>
+
+                    <label>Pickup or Drop-off:</label>
+                    <select id="customDelivery">
+                        <option value="dropoff">I'll Bring My Sneakers</option>
+                        <option value="pickup">Pickup & Delivery (+R70)</option>
+                    </select>
+
+                    <label>Address:</label>
+                    <input type="text" id="customAddress" placeholder="Enter your address" />
+
+                    <div class="price-box">Starting from R350 (price varies by design)</div>
+                    <button class="btn" onclick="submitCustom()">Submit Request</button>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+   <!-- Your existing HTML content above -->
+
+<!-- Place this at the end of body -->
+<script>
+    // Track login status
+    let isLoggedIn = false;
+
+    function login() {
+        const number = document.getElementById("loginNumber").value;
+        const password = document.getElementById("loginPassword").value;
+
+        if (number && password) {
+            isLoggedIn = true;
+            alert("Login successful!");
+        } else {
+            alert("Please enter both mobile number and password.");
+        }
+    }
+
+    function showServiceDetails() {
+        const service = document.getElementById("serviceType").value;
+        document.getElementById("washDetails").style.display = service === "wash" ? "block" : "none";
+        document.getElementById("customDetails").style.display = service === "custom" ? "block" : "none";
+        updatePrice();
+    }
+
+    function updatePrice() {
+        const type = document.getElementById("washType").value;
+        const delivery = document.getElementById("deliveryOption").value;
+
+        let price = 0;
+        if (type === "basic") price = 80;
+        if (type === "deep") price = 150;
+        if (type === "premium") price = 200;
+
+        if (delivery === "pickup") price += 50;
+
+        document.getElementById("washPriceBox").textContent = "Estimated Price: R" + price;
+    }
+
+    function submitWash() {
+        if (!isLoggedIn) {
+            alert("You must log in first to book a wash!");
+            return;
+        }
+        alert("Your sneaker wash order has been received!");
+    }
+
+    function showOtherOption() {
+        const type = document.getElementById("designType").value;
+        document.getElementById("otherDesign").style.display = type === "other" ? "block" : "none";
+    }
+
+    function submitCustom() {
+        if (!isLoggedIn) {
+            alert("You must log in first to submit a custom design request!");
+            return;
+        }
+        alert("Your custom design request has been submitted!");
+    }
+
+    function openSignup() {
+        alert("Signup functionality is not implemented yet.");
+    }
+</script>
+</body>
+
+
+</body> 
+
+</html>
+

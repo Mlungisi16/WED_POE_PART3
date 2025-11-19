@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FreshKickers — Home</title>
+
+  <!-- LINK CSS -->
+  <link rel="stylesheet" href="CSS/style.css">
+
+  <style>
+    /* Centered dark modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #111; /* black background */
+      color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      z-index: 1000;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    }
+
+    .modal input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .modal button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-login { background-color: #4CAF50; color: white; }
+    .btn-signup { background-color: transparent; color: #4CAF50; border: 1px solid #4CAF50; }
+
+    /* Overlay */
+    .overlay {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width:100%;
+      height:100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 999;
+    }
+
+    /* Cookie bar */
+    .cookie-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      z-index: 2000;
+    }
+
+    .cookie-bar button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="topbar">
+    <div class="logo"><span></span>FreshKickers</div>
+    <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href=" news.html"> News</a>
+        <a href="location.html">Location</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="enquiry.html">Enquiry</a>
+        
+    </div>
+    <div class="auth">
+        <button class="btn" onclick="openLogin()">Login</button>
+        <button class="btn-outline" onclick="openSignup()">Sign Up</button>
+    </div>
+</div>
+
+<div class="container">
+  <p>Welcome</p>
+  <img src="IMAGES/home image.jpeg" alt="FreshKickers">
+  <div class="cards">
+      <div class="card clean">SNEAKER WASH</div>
+      <div class="card custom">CUSTOM DESIGNS</div>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Login Modal -->
+<div class="modal" id="loginModal">
+  <h2>Login</h2>
+  <input type="tel" id="loginNumber" placeholder="+27 Mobile Number">
+  <input type="password" id="loginPassword" placeholder="Password">
+  <button class="btn-login" onclick="login()">Login</button>
+  <p>No account? <span style="color:#4CAF50;cursor:pointer;" onclick="openSignup()">Create one</span></p>
+</div>
+
+<!-- Signup Modal -->
+<div class="modal" id="signupModal">
+  <h2>Sign Up</h2>
+  <input type="tel" id="signupNumber" placeholder="+27 Mobile Number">
+  <input type="email" id="signupEmail" placeholder="Email">
+  <input type="password" id="signupPassword" placeholder="Password">
+  <input type="password" id="signupPasswordConfirm" placeholder="Confirm Password">
+  <button class="btn-signup" onclick="signup()">Sign Up</button>
+</div>
+
+<!-- Cookie Bar -->
+<div class="cookie-bar" id="cookieBar">
+  We use cookies to improve your experience.
+  <button onclick="acceptCookies()">Accept</button>
+</div>
+
+<script>
+  // Open modals
+  function openLogin() {
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('loginModal').style.display = 'block';
+  }
+
+  function openSignup() {
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('loginModal').style.display = 'none';
+    document.getElementById('signupModal').style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('loginModal').style.display = 'none';
+    document.getElementById('signupModal').style.display = 'none';
+  }
+
+  document.getElementById('overlay').onclick = closeModal;
+
+  // Validate phone number (+27)
+  function isValidPhone(number) {
+    const regex = /^\+27\d{9}$/;
+    return regex.test(number);
+  }
+
+  // Validate strong password
+  function isStrongPassword(password) {
+    return /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(password);
+  }
+
+  // Login function
+  function login() {
+    const phone = document.getElementById('loginNumber').value;
+    const password = document.getElementById('loginPassword').value;
+
+    if (!isValidPhone(phone)) { alert("Enter a valid South African phone number."); return; }
+    if (!password) { alert("Enter your password."); return; }
+
+    // Check if user exists (placeholder, implement real auth later)
+    alert("Login successful!");
+    closeModal();
+  }
+
+  // Signup function
+  function signup() {
+    const phone = document.getElementById('signupNumber').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const confirm = document.getElementById('signupPasswordConfirm').value;
+
+    if (!isValidPhone(phone)) { alert("Enter a valid South African phone number."); return; }
+    if (!email.includes("@")) { alert("Enter a valid email."); return; }
+    if (!isStrongPassword(password)) { alert("Password must be 8+ chars, with uppercase, lowercase, number & symbol."); return; }
+    if (password !== confirm) { alert("Passwords do not match."); return; }
+
+    alert("Signup successful!");
+    closeModal();
+  }
+
+  // Cookie acceptance
+  function acceptCookies() {
+    document.getElementById('cookieBar').style.display = 'none';
+    document.cookie = "cookiesAccepted=true; max-age=31536000"; // 1 year
+  }
+</script>
+
+</body>
+</html>
+
+
+
+
+

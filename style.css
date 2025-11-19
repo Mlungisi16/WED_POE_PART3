@@ -1,0 +1,292 @@
+:root {
+  --bg: #000;
+  --muted: #9aa6b2;
+  --accent: #29d17a;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #fff;
+}
+
+/* Navbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo span {
+  background: var(--accent);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.auth input {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 8px 10px;
+  outline: none;
+}
+
+.btn {
+  background: var(--accent);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #0b0f0c;
+  font-weight: 600;
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.card {
+  flex: 1 1 48%;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card.clean {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("cooler/images/image1.jpg");
+}
+.card.custom {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("cooler/images/image2.jpg");
+}
+
+section {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: #000;
+  border-radius: 12px;
+}
+
+section h2 {
+  color: var(--accent);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* About section */
+.about-content {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+.about img {
+  width: 420px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.about-text {
+  flex: 1 1 400px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Services */
+.services-content {
+  max-width: 800px;
+  margin: auto;
+  color: var(--muted);
+}
+
+.services-img {
+  width: 420px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.services-content select,
+.services-content input,
+.services-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #111;
+  color: white;
+  outline: none;
+}
+
+.services-content label {
+  font-weight: 600;
+  color: white;
+  display: block;
+  margin-top: 20px;
+}
+
+.price-box {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #111;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Contact */
+iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+/* WhatsApp */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1000;
+  text-decoration: none;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Signup Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.signup-modal {
+  background: #111;
+  border-radius: 10px;
+  padding: 25px;
+  width: 320px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.signup-modal input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background: #222;
+  color: white;
+}
+
+.signup-modal button {
+  margin-top: 16px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  background: var(--accent);
+  border: none;
+  color: #0b0f0c;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.error {
+  color: #ff5c5c;
+  font-size: 14px;
+  margin-top: 5px;
+}

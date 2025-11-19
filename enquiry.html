@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshKickers — Enquiry</title>
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+        /* Extra styling for form */
+        .enquiry-form {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #111;
+            padding: 25px;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .enquiry-form h2 {
+            text-align: center;
+            color: #29d17a;
+            margin-bottom: 20px;
+        }
+
+        .enquiry-form input,
+        .enquiry-form textarea {
+            width: 100%;
+            background: #222;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .enquiry-form label {
+            margin-top: 15px;
+            display: block;
+            font-weight: bold;
+        }
+
+        .enquiry-form button {
+            width: 100%;
+            margin-top: 20px;
+            background: #29d17a;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #0b0f0c;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .error {
+            color: #ff5e5e;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            font-size: 28px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="topbar">
+    <div class="logo"><span></span>FreshKickers</div>
+    <div class="nav-links">
+        <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+        <a href="news.html">News</a>
+        <a href="location.html">Location</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="enquiry.html">Enquiry</a>
+        
+    </div>
+</div>
+
+<div class="container">
+    
+    <div class="enquiry-form">
+        <h2>Send Us an Enquiry</h2>
+
+        <label>Full Name:</label>
+        <input type="text" id="name" placeholder="Your full name">
+
+        <label>Email Address:</label>
+        <input type="email" id="email" placeholder="example@gmail.com">
+
+        <label>Phone Number (+27):</label>
+        <input type="tel" id="phone" placeholder="+27...">
+
+        <label>Your Message:</label>
+        <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
+
+        <div id="errorBox" class="error"></div>
+
+        <button onclick="submitEnquiry()">Send Enquiry</button>
+    </div>
+
+</div>
+
+<!-- WhatsApp Chat Button -->
+<a href="https://wa.me/27608050577?text=Hi%20FreshKickers%2C%20I%20need%20help%20with..."
+   class="whatsapp-btn" target="_blank">💬</a>
+
+<script>
+    function submitEnquiry() {
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const message = document.getElementById("message").value.trim();
+        const error = document.getElementById("errorBox");
+
+        error.textContent = ""; // clear old errors
+
+        if (name === "") {
+            error.textContent = "Please enter your full name.";
+            return;
+        }
+
+        if (!email.includes("@") || !email.includes(".")) {
+            error.textContent = "Please enter a valid email address.";
+            return;
+        }
+
+        const saPhone = /^\+27\d{9}$/;
+        if (!saPhone.test(phone)) {
+            error.textContent = "Please enter a valid South African phone number: +27XXXXXXXXX";
+            return;
+        }
+
+        if (message.length < 5) {
+            error.textContent = "Please enter a longer message.";
+            return;
+        }
+
+        alert("Your enquiry has been sent! We will contact you soon.");
+        
+        // Optional: clear form
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("message").value = "";
+    }
+</script>
+
+</body>
+</html>
+

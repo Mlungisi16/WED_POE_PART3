@@ -1,0 +1,9 @@
+# robots.txt for FreshKickers
+User-agent: *
+Disallow: /dashboard.html      # Private admin/dashboard page
+Disallow: /enquiry.html        # Optionally block until form submissions are handled securely
+Disallow: /signup.html         # Block signup page if desired
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.freshkickers.co.za/sitemap.xml
